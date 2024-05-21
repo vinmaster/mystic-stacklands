@@ -1,15 +1,15 @@
 {
-  "name": "my-app",
+  "name": "mystic-stacklands",
   "version": "1.0.0",
   "private": true,
   "main": "build/index.js",
   "scripts": {
     "dev": "tsx watch src/server/index.ts",
-    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 2",
+    "loadtest": "tsx loadtest/example.ts --room GameRoom --numClients 2",
     "build": "npm run clean && tsc",
     "clean": "rimraf build",
     "start": "node build/index.js",
-    "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
+    "test": "NODE_ENV=test mocha -r tsx test/**.test.ts --exit --timeout 5000"
   },
   "devDependencies": {
     "@colyseus/loadtest": "^0.15.2",
@@ -26,6 +26,7 @@
     "@colyseus/playground": "^0.15.12",
     "@colyseus/tools": "^0.15.39",
     "colyseus": "^0.15.17",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-basic-auth": "^1.2.1"
   }
