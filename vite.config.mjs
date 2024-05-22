@@ -2,16 +2,15 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: './',
-  root: 'src',
-  // publicDir: './public',
+  root: './src/client',
+  publicDir: 'assets',
   clearScreen: false,
   build: {
-    outDir: '../public',
+    outDir: '../../public',
     emptyOutDir: true,
     chunkSizeWarningLimit: 5000,
     rollupOptions: {
       input: {
-        // app: './src/client/index.html',
         main: './src/client/index.html',
       },
       output: {

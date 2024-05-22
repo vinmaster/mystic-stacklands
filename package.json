@@ -8,7 +8,7 @@
     "dev-server": "tsx watch src/server/index.ts",
     "dev-client": "vite -c ./vite.config.mjs serve ./src/client",
     "loadtest": "tsx loadtest/example.ts --room GameRoom --numClients 2",
-    "build-server": "npm run clean && tsc",
+    "build": "npm run clean && tsc && vite build",
     "build-client": "vite build",
     "clean": "rimraf build",
     "start": "node build/index.js",
