@@ -24,7 +24,7 @@ export class MainGame extends Phaser.Scene {
   }
 
   preload() {
-    this.load.setPath('assets');
+    this.load.setPath('/');
     this.load.image('slime', 'slime.png');
     this.load.image('cursor_hand', 'cursor_hand.png');
   }
