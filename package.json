@@ -2,7 +2,7 @@
   "name": "mystic-stacklands",
   "version": "1.0.0",
   "private": true,
-  "main": "build/index.js",
+  "main": "build/server/index.js",
   "scripts": {
     "dev": "concurrently --raw \"npm run dev-*\"",
     "dev-server": "tsx watch src/server/index.ts",
@@ -11,7 +11,7 @@
     "build": "npm run clean && tsc && vite build",
     "build-client": "vite build",
     "clean": "rimraf build",
-    "start": "node build/index.js",
+    "start": "node build/server/index.js",
     "test": "NODE_ENV=test mocha -r tsx test/**.test.ts --exit --timeout 5000"
   },
   "devDependencies": {
