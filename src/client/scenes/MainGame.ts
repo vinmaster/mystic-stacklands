@@ -3,6 +3,7 @@ import Card from '../objects/Card';
 import { Network } from '../Network';
 import { GameRoomState } from '../../server/rooms/schema/GameRoomState';
 import { Room } from 'colyseus.js';
+import { CONSTANTS } from '../../shared/Constants';
 
 interface Point {
   x: number;
@@ -60,7 +61,7 @@ export class MainGame extends Phaser.Scene {
   async joinGameRoom() {
     this.room = await Network.client.joinOrCreate<GameRoomState>('GameRoom');
 
-    this.room.onMessage('PLAYER_MOVE', ({ sessionId, x, y }: any) => {
+    this.room.onMessage(CONSTANTS.MESSAGE.PLAYER_MOVE, ({ sessionId, x, y }: any) => {
       if (this.otherCursors[sessionId]) {
         this.otherCursors[sessionId].x = x;
         this.otherCursors[sessionId].y = y;

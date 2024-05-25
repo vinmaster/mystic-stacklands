@@ -27,6 +27,26 @@ describe('testing your Colyseus app', () => {
     // wait for state sync
     await room.waitForNextPatch();
 
-    assert.deepStrictEqual({ mySynchronizedProperty: 'Hello world' }, client1.state.toJSON());
+    let state = room.state.toJSON();
+    assert.deepStrictEqual(['cards', 'players'], Object.keys(state).sort());
+    assert.deepStrictEqual(client1.sessionId, Object.keys(state.players)[0]);
+  });
+
+  it('leaving a room', async () => {
+    const room = await colyseus.createRoom<GameRoomState>('GameRoom', {});
+
+    const client1 = await colyseus.connectTo(room);
+    await room.waitForNextPatch();
+
+    let num = await client1.leave();
+    console.log('num', num);
+    await room.waitForNextSimulationTick();
+    // await room.waitForNextPatch();
+
+    assert.strictEqual(0, room.clients.length);
+
+    let state = room.state.toJSON();
+    assert.deepStrictEqual(['cards', 'players'], Object.keys(state).sort());
+    assert.deepStrictEqual(0, Object.keys(state.players).length);
   });
 });

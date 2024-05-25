@@ -9,8 +9,7 @@
     "dev-client": "vite -c ./vite.config.mjs serve ./src/client",
     "loadtest": "tsx loadtest/example.ts --room GameRoom --numClients 2",
     "build": "npm run clean && tsc && vite build",
-    "build-client": "vite build",
-    "clean": "rimraf build",
+    "clean": "rimraf build; rimraf public",
     "start": "node build/server/index.js",
     "test": "NODE_ENV=test mocha -r tsx test/**.test.ts --exit --timeout 5000"
   },
@@ -21,9 +20,7 @@
     "@types/mocha": "^10.0.6",
     "concurrently": "^8.2.2",
     "mocha": "^10.4.0",
-    "rimraf": "^5.0.7",
-    "tsx": "^4.10.5",
-    "typescript": "^5.4.5"
+    "tsx": "^4.11.0"
   },
   "dependencies": {
     "@colyseus/monitor": "^0.15.6",
@@ -35,6 +32,8 @@
     "express": "^4.19.2",
     "express-basic-auth": "^1.2.1",
     "phaser": "^3.80.1",
+    "rimraf": "^5.0.7",
+    "typescript": "^5.4.5",
     "vite": "^5.2.11"
   }
 }
